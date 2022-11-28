@@ -1,0 +1,171 @@
+
+We describe the model contained in \begin{verbatim}
+energy_bal1d.py\end{verbatim}, as well as the implementation. 
+
+\section{The 1d model} 
+	Consider the heat equation on the hemi-sphere. At the 
+	inter-tropical convergence zone, the daily heating is most
+	intense.  
+	
+	\begin{defn}{ (solar zenith angle, solar elevation) }
+		The \emph{zenith angle} of the sun, $\circ$, i.e., the
+		angle made between its rays and a chosen vertical 
+		direction
+		$e_3$. By definition, solar elevation is its complement.
+		
+		At \emph{solar noon} 
+		$\doteq \argmin_\tau \theta_s(\tau)$,
+		zenith angle is minimized, and we have
+		\begin{align}
+				
+		\end{align}
+	\end{defn}
+	
+% Dependencies: \Lip,	
+\section{Free energy minimization and its dual}
+
+We state the problem first in a general way, then appeal to its
+specific structures. Consider a nonlinear programming problem
+in "standard form":
+\begin{align}
+	\min_{x \in \fancy D} & fe(x)	\label{fe_min}	\\
+	\text{subject to }	g_i(x) \leq 0, i \in \{ 1, \ldots, m \}	
+						\label{typei}	\\
+						h_i(x) = 0, i \in \{ 1, \ldots, p \}
+						\label{typeii}
+\end{align}
+We refer to the relations \eqref{typei} and \eqref{typeii} as
+constraints of 'type i' and 'type ii', respectively. Here, $\fancy
+D \subset \R^d$ stands for some domain in $\R^d$, $d=2,3$ as yet
+unspecified. (Assume $\fancy D$ has non-empty interior.)
+
+Define the Lagrangian function 
+$\fancy L:\R^d \times \R^m \times \R^p \rightarrow \R$
+\begin{align}
+	\fancy L(x,\lambda,\nu) = f(x) 
+			+ \sum_{i=1}^m \lambda_i g_i(x) 
+			+ \sum_{i=1}^p \nu_i h_i(x).
+\end{align}
+Here, $(\vec{\lambda},\vec{\nu})$ is the set of \emph{dual
+variables} or \emph{Lagrangian multipliers} with
+$\vec{\lambda} = (\lambda_i)_i$ etc. 
+Consider the mapping 
+\begin{align}\label{duality_transform}
+	X & : \Lip(\R^{d+m+p} \rightarrow \R) \rightarrow X	\\
+	\fancy L(x,\lambda,\nu) \mapsto 
+	\inf_{x \in \fancy D} \fancy L(x,\lambda,\nu)
+\end{align}
+That is, we assume the Lagrangian is Lipschitz. In [RadkeKim22],
+we have as well the physical assumptions of position and momentum
+space splitting of variables and coercivity in the v variables.
+
+\begin{prop}
+	The function $X(\fancy L)$ is concave in its variables.
+\end{prop}
+
+\begin{proof}
+	For each fixed $x$ we have
+	\begin{align}
+		\fancy L(x,\lambda,\nu) = f(x) + \lambda \cdot g(x) 
+										+ \nu \cdot h(x).
+	\end{align}
+	Consider the shadow variable pairs $(\lambda,\nu)$ and
+	$(\lambda',\nu')$. Choose $\e > 0$. For each pair, choose
+	$x(\e) \in \fancy D$ such that 
+	\begin{align}
+		L(x(\e),\lambda,\nu) - X[\fancy L](\lambda',\nu')  
+		< \frac{\e}{2}
+	\end{align}
+	and similarly
+	\begin{align}
+		L(y(\e),\lambda,\nu) - X[\fancy L](\lambda',\nu')
+		 < \frac{\e}{2}.
+	\end{align}
+	Then compute:
+	% TODO: finish analysis exer
+	\begin{align}
+		\eta X[L](\lambda,\nu) + (1-\eta) X(\lambda',\nu') 
+		= (something ) + \e.
+	\end{align}
+	
+\end{proof}
+
+We move on to some geometric/topological definitions.
+
+\begin{defn}
+	Let $E$ be a set in $\R^d$. Its \emph{relative interior} is
+	defined 
+	\begin{align}\label{def:relint}
+		\text{relint}(S) \doteq \{ x \in S : \exists \e > 0 s.t. 
+									N_\e(x) \cap \text{aff}(S) 
+									\subset S \}
+	\end{align}
+	
+\end{defn}
+
+% Dependencies: \aff
+\begin{defn}
+	The \emph{affine hull} $\aff(S)$ of a set $S \in \R^d$ is
+	defined to be the set of all \emph{affine combinations}
+	$\sum_{i=1}^K \alpha_i x_i$ of $K$-samples from $S$.
+	
+	\begin{align}
+		\aff(S) = \left\{ \sum_{i=1}^K \alpha_i x_i : k > 0, 
+							x_i \in S, \alpha_i \in \R 
+							\text{ such that } \sum_{i=1}^K 		
+							\alpha_i = 1 \right\}.
+	\end{align}
+
+\end{defn}
+
+\begin{defn}
+	The \emph{convex hull} of a set $S \in \R^d$ is defined
+	to be any of the equivalent
+	\begin{enumerate}
+		\item The (unique) minimal convex set containing $S$.
+		\item The intersection of all convex sets containing $S$.
+		\item The set of \emph{convex combinations} of points in
+			$X$.
+		\item The union of all \emph{simplices} with vertices in
+		$X$.
+	\end{enumerate}
+\end{defn}
+
+% Intuition: rubber band
+\begin{prop}
+	For bounded sets in $\R^2$, the boundary of the convex hull
+	is the simpled closed curve with minimum perimeter containing
+	$S$.
+\end{prop}
+
+The above does not "immediately" generalize to higher dimensions.
+A neighborhood of 
+
+
+
+
+\begin{remark}
+	Q: How do these definitions compare? 
+\end{remark}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+
