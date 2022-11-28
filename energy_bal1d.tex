@@ -1,3 +1,4 @@
+%% SCRATCH NOTES ON ENERGY BALANCE/ FREE ENERGY MINIMIZATION PROBLEMS
 
 We describe the model contained in \begin{verbatim}
 energy_bal1d.py\end{verbatim}, as well as the implementation. 
@@ -55,10 +56,7 @@ Consider the mapping
 	\fancy L(x,\lambda,\nu) \mapsto 
 	\inf_{x \in \fancy D} \fancy L(x,\lambda,\nu)
 \end{align}
-That is, we assume the Lagrangian is Lipschitz. In [RadkeKim22],
-we have as well the physical assumptions of position and momentum
-space splitting of variables and coercivity in the v variables.
-
+That is, we assume the Lagrangian is Lipschitz.
 \begin{prop}
 	The function $X(\fancy L)$ is concave in its variables.
 \end{prop}
@@ -89,8 +87,8 @@ space splitting of variables and coercivity in the v variables.
 	\end{align}
 	
 \end{proof}
-
-We move on to some geometric/topological definitions.
+ 
+some geometric/topological definitions.
 
 \begin{defn}
 	Let $E$ be a set in $\R^d$. Its \emph{relative interior} is
