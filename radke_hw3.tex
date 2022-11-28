@@ -8,9 +8,13 @@
 \usepackage{amsthm}
 \usepackage[margin=1in]{geometry} % for smaller margins
 
+
+\usepackage{hyperref}
+
 % for figures
 \usepackage{graphicx}
 \graphicspath{ {.} }
+
 
 % Theorem environments
 \theoremstyle{remark}
@@ -47,7 +51,11 @@
 \begin{document}
 
 \maketitle
-Link to github repository: 
+
+\href{https://github.com/jordanradke/energy_balance}{Link to github repository.} Main file to run
+is \verb+analytic_benchmark.py+, outputting plots for solutions from the implicit Euler method.
+Setting variable \verb+ie+ to False in the main for loop of this file instead outputs solutions
+from explicit method with ODEINT.
 
 
 Let $T_0$ be an initial (meridionally-averaged) temperature distribution, set to be 
